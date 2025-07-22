@@ -159,7 +159,7 @@ class PathManager {
             throw new Exception("Root path does not exist: " . $this->config['root_path']);
         }
         
-        return strpos($realPath, $rootPath) === 0;
+        return strncmp($realPath, $rootPath, strlen($rootPath)) === 0;
     }
     
     /**
