@@ -149,23 +149,17 @@ class PathManager {
      * Check if path can be accessed based on security rules
      */
     public function canAccessPath($path) {
-    // Cegah path yang jelas-jelas berbahaya sejak awal
-    if (strpos($path, '..') !== false || strpos($path, "\0") !== false) {
-        return false;
-    }
-
-    // Hindari error open_basedir dengan suppress dan validasi
-    $realPath = @realpath($path); // suppress warning
-    if (!$realPath) {
-        return false;
-    }
-
-    $rootPath = realpath($this->config['root_path']);
-    if (!$rootPath) {
-        throw new Exception("Root path does not exist: " . $this->config['root_path']);
-    }
-
-    return strncmp($realPath, $rootPath, strlen($rootPath)) === 0;
+        $realPath = realpath($path);
+        if (!$realPath) {
+            return false;
+        }
+        
+        $rootPath = realpath($this->config['root_path']);
+        if (!$rootPath) {
+            throw new Exception("Root path does not exist: " . $this->config['root_path']);
+        }
+        
+        return strpos($realPath, $rootPath) === 0;
     }
     
     /**
